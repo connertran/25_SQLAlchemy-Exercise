@@ -52,7 +52,7 @@ class UserViewsTestCase(TestCase):
             self.assertIn('<button id="delete-btn">Delete</button>',html)
     def test_user_edit(self):
         with app.test_client() as client:
-            resp = client.get(f"/user/edit/{self.user_id}")
+            resp = client.post(f"/user/edit/{self.user_id}")
             html = resp.get_data(as_text=True)
 
             self.assertEqual(resp.status_code, 200)
